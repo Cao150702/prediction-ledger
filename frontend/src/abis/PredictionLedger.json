@@ -11,7 +11,17 @@
   {
     "inputs": [
       { "internalType": "string", "name": "predictionJson", "type": "string" },
-      { "internalType": "string", "name": "salt", "type": "string" }
+      { "internalType": "string", "name": "salt", "type": "string" },
+      { "internalType": "string", "name": "asset", "type": "string" },
+      { "internalType": "int8", "name": "direction", "type": "int8" },
+      { "internalType": "int256", "name": "targetPrice", "type": "int256" },
+      { "internalType": "int256", "name": "targetChangePct_x100", "type": "int256" },
+      { "internalType": "int256", "name": "submittedPrice", "type": "int256" },
+      { "internalType": "uint256", "name": "timeframeHours", "type": "uint256" },
+      { "internalType": "uint256", "name": "confidence_x100", "type": "uint256" },
+      { "internalType": "uint256", "name": "stopLossPct_x100", "type": "uint256" },
+      { "internalType": "uint256", "name": "submittedAt", "type": "uint256" },
+      { "internalType": "string", "name": "notes", "type": "string" }
     ],
     "name": "revealPrediction",
     "outputs": [],

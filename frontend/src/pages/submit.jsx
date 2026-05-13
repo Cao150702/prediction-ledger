@@ -83,6 +83,10 @@ export default function SubmitPage() {
           <input value={targetPrice} onChange={e => setTargetPrice(e.target.value)} />
         </div>
         <div>
+          <label>Submitted Price (price now)</label>
+          <input value={targetPrice} onChange={e => setTargetPrice(e.target.value)} />
+        </div>
+        <div>
           <label>Timeframe (hours)</label>
           <input value={timeframe} onChange={e => setTimeframe(e.target.value)} />
         </div>
@@ -99,6 +103,7 @@ export default function SubmitPage() {
           <p>salt: <code>{salt}</code></p>
           <p>predictionJson: <pre style={{ whiteSpace: 'pre-wrap' }}>{predictionJson}</pre></p>
           <button onClick={onCommit}>签名并提交 commit tx</button>
+          <p style={{ color: '#666', marginTop: 8 }}>本地已保存，你可以在 Reveal 页面查找并揭示（不要清除浏览器数据）。</p>
         </div>
       )}
     </div>

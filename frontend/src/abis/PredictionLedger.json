@@ -1,0 +1,21 @@
+[
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "commitHash", "type": "bytes32" }
+    ],
+    "name": "commitPrediction",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "predictionJson", "type": "string" },
+      { "internalType": "string", "name": "salt", "type": "string" }
+    ],
+    "name": "revealPrediction",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

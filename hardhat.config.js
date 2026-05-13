@@ -1,4 +1,5 @@
 require('@nomiclabs/hardhat-ethers');
+require('dotenv').config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -7,6 +8,13 @@ module.exports = {
     settings: {
       optimizer: { enabled: true, runs: 200 },
       viaIR: true
+    }
+  },
+  networks: {
+    hardhat: {},
+    arbitrumSepolia: {
+      url: process.env.ARBITRUM_SEPOLIA_RPC_URL || "",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
     }
   }
 };

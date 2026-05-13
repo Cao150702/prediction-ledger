@@ -68,39 +68,35 @@ contract PredictionLedger is Ownable {
         string calldata /* notes */
     ) external {
         bytes32 h = sha256(abi.encodePacked(predictionJson, salt));
-        Commit memory c = commits[h];
-        require(c.exists, "no matching commit");
-        require(c.predictor == msg.sender, "not predictor");
+        require(commits[h].exists, "no matching commit");
+        require(commits[h].predictor == msg.sender, "not predictor");
 
         uint256 pid = nextPredictionId++;
-        predictions[pid] = Prediction({
-            predictor: msg.sender,
-            predictionJson: predictionJson,
-            asset: asset,
-            direction: direction,
-            targetPrice: targetPrice,
-            targetChangePct_x100: targetChangePct_x100,
-            submittedPrice: submittedPrice,
-            timeframeHours: timeframeHours,
-            confidence_x100: confidence_x100,
-            stopLossPct_x100: stopLossPct_x100,
-            submittedAt: submittedAt,
-            revealed: true,
-            settled: false,
-            commitTimestamp: c.commitTimestamp,
-            score: 0
-        });
+        Prediction storage p = predictions[pid];
+        p.predictor = msg.sender;
+        p.predictionJson = predictionJson;
+        p.asset = asset;
+        p.direction = direction;
+        p.targetPrice = targetPrice;
+        p.targetChangePct_x100 = targetChangePct_x100;
+        p.submittedPrice = submittedPrice;
+        p.timeframeHours = timeframeHours;
+        p.confidence_x100 = confidence_x100;
+        p.stopLossPct_x100 = stopLossPct_x100;
+        p.submittedAt = submittedAt;
+        p.revealed = true;
+        p.settled = false;
+        p.commitTimestamp = commits[h].commitTimestamp;
+        p.score = 0;
 
         predictorPredictions[msg.sender].push(pid);
 
-        // refund deposit to predictor (MVP behavior)
-        if (c.deposit > 0) {
-            (bool ok, ) = msg.sender.call{value: c.deposit}("\x01");
-            // ignore refund failure for simplicity
+        uint256 deposit = commits[h].deposit;
+        if (deposit > 0) {
+            (bool ok, ) = msg.sender.call{value: deposit}("");
             ok;
         }
 
-        // mark commit as used
         delete commits[h];
 
         emit PredictionRevealed(pid, msg.sender, predictionJson);

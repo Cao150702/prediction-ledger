@@ -1,0 +1,21 @@
+{
+  "name": "prediction-ledger",
+  "version": "1.0.0",
+  "description": "On-chain prediction accountability (MVP)",
+  "main": "index.js",
+  "scripts": {
+    "test": "hardhat test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "*",
+    "@nomicfoundation/hardhat-toolbox": "*",
+    "@nomiclabs/hardhat-ethers": "*",
+    "@openzeppelin/contracts": "*",
+    "chai": "*",
+    "ethers": "*",
+    "hardhat": "*"
+  }
+}

@@ -1,5 +1,5 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+import { expect } from "chai";
+import { ethers } from "hardhat";
 
 describe("PredictionLedger (commit -> reveal -> settle)", function () {
   it("full flow with perfect prediction scores 100", async function () {
